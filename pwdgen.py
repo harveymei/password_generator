@@ -67,8 +67,8 @@ while number_input > 0:
     number_input = number_input - 1
 
 
-print(pwd_list)
-#filename = dt.now().strftime("%Y%m%d%H%M%S") + ".txt"
-#with open(filename, 'wt') as f:
-#    for i in pwd_list:
-#        f.write(i)
+# print(pwd_list)
+filename = dt.now().strftime("%Y%m%d%H%M%S") + ".txt"
+with open(filename, 'wt') as f:
+    for i in pwd_list:
+        f.write(i + "\n")
