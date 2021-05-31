@@ -56,19 +56,18 @@ if number_input == '':
     number_input = 1
 
 # 在指定字符组合中取随机字符，循环，直到满足密码长度要求，打印结果
-pwd_list = []
+password_list = []
 while number_input > 0:
     pwd = ''
-    length = length_input  # 额外增加第三变量，防止嵌套循环第二次条件为False的情况
-    while length > 0:  # 在第二次循环时，已经为False，因此无法生成
+    length = length_input  # 额外增加第三变量，防止嵌套循环第二次条件为length_input > 0值为False的情况
+    while length > 0:  # 循环指定次数拼接字符串
         pwd = pwd + level[random.randrange(0, len(level))]
         length = length - 1
-    pwd_list.append(pwd)
+    password_list.append(pwd)
     number_input = number_input - 1
-
 
 # print(pwd_list)
 filename = dt.now().strftime("%Y%m%d%H%M%S") + ".txt"
 with open(filename, 'wt') as f:
-    for i in pwd_list:
-        f.write(i + "\n")
+    for password in password_list:
+        f.write(password + "\n")
