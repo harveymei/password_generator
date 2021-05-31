@@ -27,21 +27,23 @@ level_4 = level_3 + string.punctuation
 
 
 # 不同等级密码字符组合列表
-print("Python 密码生成器\n"
+print("---------------\n"
+      "Python 密码生成器\n"
+      "---------------\n"
       "1）数字\n"
       "2）数字+小写字母\n"
       "3）数字+小写字母+大写字母\n"
       "4）数字+小写字母+大写字母+符号\n")
 
-level_input = input("请选择密码复杂度等级:（默认为4）")
+password_level = input("请选择密码复杂度等级:（默认为4）")
 # 密码复杂度等级
-if level_input == '1':
+if password_level == '1':
     level = level_1
-elif level_input == '2':
+elif password_level == '2':
     level = level_2
-elif level_input == '3':
+elif password_level == '3':
     level = level_3
-elif level_input == '4':
+elif password_level == '4':
     level = level_4
 else:
     print("Error Input")
