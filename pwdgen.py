@@ -11,26 +11,24 @@ Python 密码生成器
 Python Password Generator
 指定长度和复杂度的密码批量生成工具
 用户录入作为参数，传入函数，生成密码
+PyCharm缩进，选中代码块按tab键或shift+tab键
 """
 
 import string
 import random
-
+from datetime import datetime as dt
 
 # 密码字符类型
 # https://docs.python.org/3/library/string.html
-numbers = [i for i in string.digits]  # 依次将数字放入列表
-lowercase_letters = [j for j in string.ascii_lowercase]  # 依次将小写字母放入列表
-uppercase_letters = [m for m in string.ascii_uppercase]  # 依次将大写字母放入列表
-symbols = [n for n in string.punctuation]  # 依次将符号放入列表
+level_1 = string.digits
+level_2 = level_1 + string.ascii_lowercase
+level_3 = level_2 + string.ascii_uppercase
+level_4 = level_3 + string.punctuation
+
 
 # 不同等级密码字符组合列表
-level1 = numbers
-level2 = numbers + lowercase_letters
-level3 = numbers + lowercase_letters + uppercase_letters
-level4 = numbers + lowercase_letters + uppercase_letters + symbols
-
-print("1）数字\n"
+print("Python 密码生成器\n"
+      "1）数字\n"
       "2）数字+小写字母\n"
       "3）数字+小写字母+大写字母\n"
       "4）数字+小写字母+大写字母+符号\n")
@@ -38,49 +36,39 @@ print("1）数字\n"
 level_input = input("请选择密码复杂度等级:（默认为4）")
 # 密码复杂度等级
 if level_input == '1':
-    level = level1
+    level = level_1
 elif level_input == '2':
-    level = level2
+    level = level_2
 elif level_input == '3':
-    level = level3
-elif level_input == '4' or '':
-    level = level4
+    level = level_3
+elif level_input == '4':
+    level = level_4
 else:
     print("Error Input")
     exit()
 
-
-length_input = input("请输入密码长度：（默认为12）")
-if level_input == '':
+length_input = int(input("请输入密码长度：（默认为12）"))
+if length_input == '':
     length_input = 12
 
+number_input = int(input("请输入生成数量：（默认为1）"))
+if number_input == '':
+    number_input = 1
+
 # 在指定字符组合中取随机字符，循环，直到满足密码长度要求，打印结果
-
-# 返回对象长度
-# print(len(level1))
-# print(len(level2))
-# print(len(level3))
-# print(len(level4))
-
-# 随机数作为列表索引值，取列表元素
-print(level1[random.randrange(0, len(level1))])
-print(level2[random.randrange(0, len(level2))])
-print(level3[random.randrange(0, len(level3))])
-print(level4[random.randrange(0, len(level4))])
-
-level_n = ['level1', 'level2', 'level3', 'level4']
-
-
-def password_generator(level=4, length=12):
-
-    output = []
-    while length > 0:
-        output.append(level[random.randrange(0, len(level))])
+pwd_list = []
+while number_input > 0:
+    pwd = ''
+    length = length_input  # 额外增加第三变量，防止嵌套循环第二次条件为False的情况
+    while length > 0:  # 在第二次循环时，已经为False，因此无法生成
+        pwd = pwd + level[random.randrange(0, len(level))]
         length = length - 1
-        if length < 1:
-            break
-    print(output)
+    pwd_list.append(pwd)
+    number_input = number_input - 1
 
 
-password_generator()
-
+print(pwd_list)
+#filename = dt.now().strftime("%Y%m%d%H%M%S") + ".txt"
+#with open(filename, 'wt') as f:
+#    for i in pwd_list:
+#        f.write(i)
