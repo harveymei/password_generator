@@ -18,8 +18,10 @@ import string
 import random
 from datetime import datetime as dt
 
-# 密码字符类型
+
 # https://docs.python.org/3/library/string.html
+# https://docs.python.org/3/library/random.html
+# 密码字符类型
 level_1 = string.digits
 level_2 = level_1 + string.ascii_lowercase
 level_3 = level_2 + string.ascii_uppercase
@@ -35,7 +37,7 @@ print("---------------\n"
       "3）数字+小写字母+大写字母\n"
       "4）数字+小写字母+大写字母+符号\n")
 
-password_level = input("请选择密码复杂度等级:（默认为4）")
+password_level = input("请选择密码复杂度等级:（建议为4）")
 # 密码复杂度等级
 if password_level == '1':
     level = level_1
@@ -49,11 +51,11 @@ else:
     print("Error Input")
     exit()
 
-length_input = int(input("请输入密码长度：（默认为12）"))
+length_input = int(input("请输入密码长度：（建议为12）"))
 if length_input == '':
     length_input = 12
 
-number_input = int(input("请输入生成数量：（默认为1）"))
+number_input = int(input("请输入生成数量："))
 if number_input == '':
     number_input = 1
 
