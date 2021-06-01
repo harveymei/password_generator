@@ -22,11 +22,6 @@ from datetime import datetime as dt
 # https://docs.python.org/3/library/string.html
 # https://docs.python.org/3/library/random.html
 # 密码字符类型
-level_1 = string.digits
-level_2 = level_1 + string.ascii_lowercase
-level_3 = level_2 + string.ascii_uppercase
-level_4 = level_3 + string.punctuation
-
 
 # 不同等级密码字符组合列表
 print("---------------\n"
@@ -40,13 +35,13 @@ print("---------------\n"
 password_level = input("请选择密码复杂度等级:（建议为4）")
 # 密码复杂度等级
 if password_level == '1':
-    level = level_1
+    level = string.digits
 elif password_level == '2':
-    level = level_2
+    level = string.digits + string.ascii_lowercase
 elif password_level == '3':
-    level = level_3
+    level = string.digits + string.ascii_lowercase + string.ascii_uppercase
 elif password_level == '4':
-    level = level_4
+    level = string.digits + string.ascii_lowercase + string.ascii_uppercase + string.punctuation
 else:
     print("Error Input")
     exit()
