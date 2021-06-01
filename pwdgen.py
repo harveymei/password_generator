@@ -60,14 +60,15 @@ while number_input > 0:
     length = length_input  # 额外增加第三变量，防止嵌套循环length_input > 0第二次值为False的情况
     pwd = ''
     while length > 0:  # 循环指定次数拼接字符串
-        pwd = pwd + level[random.randrange(0, len(level))]
-        length = length - 1
+        pwd = pwd + level[random.randrange(0, len(level))]  # 随机传入字符串切片索引值
+        length = length - 1  # 直到满足密码长度退出循环
     password_list.append(pwd)
-    number_input = number_input - 1
+    number_input = number_input - 1  # 直到满足密码生成数量退出循环
 
-# print(pwd_list)
+# 遍历列表写入文件
 filename = dt.now().strftime("%Y%m%d%H%M%S") + ".txt"
 with open(filename, 'wt') as f:
     for password in password_list:
         f.write(password + "\n")
 
+print("\n密码生成完成！")
