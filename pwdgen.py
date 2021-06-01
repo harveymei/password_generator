@@ -71,4 +71,5 @@ with open(filename, 'wt') as f:
     for password in password_list:
         f.write(password + "\n")
 
-print("\n密码生成完成！")
+print("\n----------\n"
+      "密码生成完成！")
